@@ -14,9 +14,13 @@ provider:
 
 functions:
   hello:
-    handler: src/functions/hello.handle
+    handler: src/app.handler
     events:
-      - http:
-          path: /hello
-          method: GET
+      - http: 
+          path: /
+          method: ANY
+          cors: true
+      - http: 
+          path: /{proxy+}
+          method: ANY
           cors: true
