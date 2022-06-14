@@ -1,6 +1,8 @@
 import express, { Request, Response } from 'express';
 import * as ServerlessHttp from 'serverless-http';
 
+import './shared/infra/knex';
+
 const app = express();
 app.use(express.json());
 

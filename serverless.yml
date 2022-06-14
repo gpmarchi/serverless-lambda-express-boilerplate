@@ -3,6 +3,7 @@ service: serverless-lambda-express-boilerplate
 plugins:
   - serverless-offline
   - serverless-webpack
+  - serverless-dotenv-plugin
 
 custom:
   webpack:
@@ -16,11 +17,11 @@ functions:
   hello:
     handler: src/app.handler
     events:
-      - http: 
+      - http:
           path: /
           method: ANY
           cors: true
-      - http: 
+      - http:
           path: /{proxy+}
           method: ANY
           cors: true
