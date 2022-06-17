@@ -46,4 +46,13 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    extensions: ['.ts', '.tsx'],
+    alias: {
+      '@libs': path.resolve(__dirname, 'src', 'libs'),
+      '@modules': path.resolve(__dirname, 'src', 'modules'),
+      '@config': path.resolve(__dirname, 'src', 'config'),
+      '@shared': path.resolve(__dirname, 'src', 'shared'),
+    }
+  }
 };

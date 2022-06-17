@@ -1,8 +1,9 @@
 import express, { Request, Response } from 'express';
 import * as ServerlessHttp from 'serverless-http';
 
-import { CustomersRepository } from './modules/customers/infra/knex/repositories/CustomersRepository';
-import { CreateCustomerService } from './modules/customers/services/CreateCustomerService';
+import '@shared/container';
+
+import { CreateCustomerService } from '@modules/customers/services/CreateCustomerService';
 
 const app = express();
 app.use(express.json());

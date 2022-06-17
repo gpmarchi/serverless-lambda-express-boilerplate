@@ -1,6 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
-import { knex } from '../../../../../shared/infra/knex';
+import { knex } from '@shared/infra/knex';
+
 import { ICustomersRepository } from '../../../repositories/ICustomersRepository';
 import { ICustomer } from '../entities/ICustomer';
 
