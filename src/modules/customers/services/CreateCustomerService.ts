@@ -1,3 +1,5 @@
+import { inject, injectable } from 'tsyringe';
+
 import { ICustomer } from '../infra/knex/entities/ICustomer';
 import { ICustomersRepository } from '../repositories/ICustomersRepository';
 
@@ -9,10 +11,14 @@ interface IRequestDTO {
   password: string;
 }
 
+@injectable()
 class CreateCustomerService {
   private customersRepository: ICustomersRepository;
 
-  constructor(customersRepository: ICustomersRepository) {
+  constructor(
+    @inject('CustomersRepository')
+    customersRepository: ICustomersRepository,
+  ) {
     this.customersRepository = customersRepository;
   }
 

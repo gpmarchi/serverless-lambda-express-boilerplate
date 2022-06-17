@@ -1,5 +1,7 @@
+import 'reflect-metadata';
 import express, { Request, Response } from 'express';
 import * as ServerlessHttp from 'serverless-http';
+import { container } from 'tsyringe';
 
 import '@shared/container';
 
@@ -15,8 +17,7 @@ app.get('/hello', (req: Request, res: Response) => {
 app.post('/customers', async (req: Request, res: Response) => {
   const { first_name, last_name, username, email, password } = req.body;
 
-  const customersRepository = new CustomersRepository();
-  const createCustomer = new CreateCustomerService(customersRepository);
+  const createCustomer = container.resolve(CreateCustomerService);
 
   const customer = await createCustomer.execute({
     first_name,
