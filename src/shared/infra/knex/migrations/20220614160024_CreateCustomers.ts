@@ -8,8 +8,7 @@ export async function up(knex: Knex): Promise<void> {
     tableBuilder.string('username').unique().notNullable();
     tableBuilder.string('email').unique().notNullable();
     tableBuilder.string('password').notNullable();
-    tableBuilder.timestamp('created_at').defaultTo(knex.fn.now()).notNullable();
-    tableBuilder.timestamp('updated_at').defaultTo(knex.fn.now()).notNullable();
+    tableBuilder.timestamps(true, true);
   });
 }
 
