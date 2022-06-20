@@ -16,6 +16,22 @@ class CustomersRepository implements ICustomersRepository {
 
     return customer;
   }
+
+  public async findByUsername(username: string): Promise<ICustomer> {
+    const [customer] = await knex<ICustomer>('customers')
+      .select('*')
+      .where({ username });
+
+    return customer;
+  }
+
+  public async findByEmail(email: string): Promise<ICustomer> {
+    const [customer] = await knex<ICustomer>('customers')
+      .select('*')
+      .where({ email });
+
+    return customer;
+  }
 }
 
 export { CustomersRepository };

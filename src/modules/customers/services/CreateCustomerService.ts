@@ -1,5 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 
+import { AppError } from '@shared/errors/AppError';
+
 import { ICustomer } from '../infra/knex/entities/ICustomer';
 import { ICustomersRepository } from '../repositories/ICustomersRepository';
 
@@ -29,6 +31,16 @@ class CreateCustomerService {
     email,
     password,
   }: IRequestDTO): Promise<ICustomer> {
+    const registeredUsername = await this.customersRepository.findByUsername(
+      username,
+    );
+
+    const registeredEmail = await this.customersRepository.findByEmail(email);
+
+    if (registeredEmail || registeredUsername) {
+      throw new AppError('Customer already registered.', 400);
+    }
+
     const customer = await this.customersRepository.create({
       first_name,
       last_name,
