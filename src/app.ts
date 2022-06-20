@@ -1,6 +1,7 @@
 import 'reflect-metadata';
 import express from 'express';
 import ServerlessHttp from 'serverless-http';
+import 'express-async-errors';
 
 import '@shared/container';
 
