@@ -1,3 +1,4 @@
+import { instanceToInstance } from 'class-transformer';
 import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
@@ -17,7 +18,7 @@ class CustomersController {
       password,
     });
 
-    return response.json(customer);
+    return response.json(instanceToInstance(customer));
   }
 }
 

@@ -2,7 +2,7 @@ import { inject, injectable } from 'tsyringe';
 
 import { AppError } from '@shared/errors/AppError';
 
-import { ICustomer } from '../infra/knex/entities/ICustomer';
+import { Customer } from '../infra/knex/entities/Customer';
 import { ICustomersRepository } from '../repositories/ICustomersRepository';
 
 interface IRequestDTO {
@@ -30,7 +30,7 @@ class CreateCustomerService {
     username,
     email,
     password,
-  }: IRequestDTO): Promise<ICustomer> {
+  }: IRequestDTO): Promise<Customer> {
     const registeredUsername = await this.customersRepository.findByUsername(
       username,
     );
