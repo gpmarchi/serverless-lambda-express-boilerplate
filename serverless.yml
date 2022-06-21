@@ -8,7 +8,9 @@ plugins:
 custom:
   webpack:
     webpackConfig: ./webpack.config.js
-    includeModules: true
+    includeModules:
+      forceInclude:
+        - pg
 
 provider:
   name: aws
